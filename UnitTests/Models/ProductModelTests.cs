@@ -32,6 +32,53 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void ProductModel_Logistics_Default_Empty_String_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = new ProductModel();
+
+            // Assert
+            Assert.AreEqual("", result.Logistics);
+        }
+
+        [TestMethod]
+        public void ProductModel_Default_Email_Value_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = new ProductModel();
+
+            // Assert
+            Assert.AreEqual("Unknown", result.Email);
+        }
+
+        [TestMethod]
+        public void ProductModel_Initialize_All_Members_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = new ProductModel()
+            {
+                Id = "id",
+                Maker = "maker",
+                Image = "image.png",
+                Url = "http://localhost:8080/",
+                Title = "title",
+                Description = "description",
+                Sequence = "sequence",
+                Email = "nhusar@seattleu.edu",
+                Logistics = "logistics"
+            };
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
         public void ProductModel_Average_Rating_Is_5_Should_Pass()
         {
             // Arrange
@@ -51,6 +98,18 @@ namespace UnitTests
 
             // Act
             var result = new ProductModel { Ratings = null };
+
+            // Assert
+            Assert.AreEqual(0, result.AverageRating());
+        }
+
+        [TestMethod]
+        public void ProductModel_Average_Rating_Of_Zero_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = new ProductModel { Ratings = new int[] { 0 } };
 
             // Assert
             Assert.AreEqual(0, result.AverageRating());
